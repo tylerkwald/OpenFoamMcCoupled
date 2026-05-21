@@ -28,8 +28,8 @@ endTime         1;                 // Run for a few seconds of physical time
 adjustTimeStep  yes;
 maxCo           0.1;    // Lowered from 0.5/1.0 to brutally restrict velocity spikes
 maxAlphaCo      0.1;    // Restricts thermal diffusion jumps
-maxDeltaT       1e-6;   // Hard cap on how large the time step is allowed to grow
-deltaT          1e-7;   // Start the simulation 10x slower than before
+maxDeltaT       1e-3;   // Hard cap on how large the time step is allowed to grow
+deltaT          1e-5;   // Start the simulation 10x slower than before
 writeControl    adjustable;
 
 writeInterval   1000;
