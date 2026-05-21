@@ -1,0 +1,90 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2412                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       dictionary;
+    location    "system/coolantZone";
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default         Euler;
+}
+
+gradSchemes
+{
+    default         Gauss linear;
+}
+divSchemes
+{
+    default         none;
+
+    // Density is perfectly fine with bounded upwind
+    div(phi,rho)    bounded Gauss upwind; 
+
+    // FIX 1 & 2: Use linearUpwindV (Vector) for U, without the 'bounded' wrapper
+    div(phi,U)      Gauss linearUpwindV grad(U);
+
+    // FIX 3: Enthalpy (scalar) uses standard linearUpwind
+    div(phi,h)      Gauss linearUpwind grad(h);
+    div(phi,K)      Gauss linearUpwind grad(K);
+
+
+    // FIX 4: Corrected uppercase K to lowercase k. 
+    // Strict first-order upwind for turbulence stability.
+    turbulence      Gauss upwind;
+    div(phi,k)      $turbulence;
+    div(phi,epsilon) $turbulence;
+    div(phi,R)      $turbulence;
+
+    // Stress tensor divergence operators
+    div(R)          Gauss linear;
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
+}
+/*divSchemes
+{
+    default         none;
+
+    div(phi,rho)    bounded Gauss upwind; 
+
+    div(phi,U)      bounded Gauss linearUpwind;
+
+    div(phi,K)      bounded Gauss linearUpwind;
+    div(phi,h)      bounded Gauss linearUpwind;
+
+    turbulence      Gauss upwind;
+    div(phi,k)      $turbulence;
+    div(phi,epsilon) $turbulence;
+    div(phi,R)      $turbulence;
+    div(R)          Gauss linear;
+
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
+}*/
+
+laplacianSchemes
+{
+    default        Gauss linear corrected;
+}
+
+interpolationSchemes
+{
+    default         linear;
+}
+
+snGradSchemes
+{
+    default         corrected;
+}
+
+
+// ************************************************************************* //

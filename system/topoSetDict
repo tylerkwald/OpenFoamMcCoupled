@@ -1,0 +1,116 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    ////////////////////////////////////////////////////////////////////////////////////////
+        // 1. Select cells based on the STL geometry
+    //FUEL
+    {
+        name        fuelCells;
+        type        cellSet;
+        action      new;
+        source      surfaceToCell;
+        sourceInfo
+        {
+            file                "constant/GeometrySimple/fuel.stl";
+            useSurfaceOrientation false; 
+            outsidePoints       ((.006 .006 0.001)); // Point guaranteed to be OUTSIDE the STL
+            includeCut          true;            // Include cells cut by the STL
+            includeInside       true;            // Include cells inside the STL
+            includeOutside      false;           // Exclude cells strictly outside
+            nearDistance        -1;              // Distance check (disabled if -1)
+            curvature           1;            // Surface curvature check (disabled if -100)
+        }
+    }
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+        // 1. Select cells based on the STL geometry
+    //Cladding
+    {
+        name        claddingCells;
+        type        cellSet;
+        action      new;
+        source      surfaceToCell;
+        sourceInfo
+        {
+            file                "constant/GeometrySimple/cladding.stl";
+            useSurfaceOrientation false; 
+            outsidePoints       ((0 0 .001)(.006 .006 .001)); // Point guaranteed to be OUTSIDE the STL
+            includeCut          false;            // Exclude cells cut by the STL
+            includeInside       true;            // Include cells inside the STL
+            includeOutside      false;           // Exclude cells strictly outside
+            nearDistance        -1;              // Distance check (disabled if -1)
+            curvature           1;            // Surface curvature check (disabled if -100)
+        }
+    }
+
+
+//////////////////////////////////////////////////////////////////////////////
+// 3. Now define COOLANT by starting with ALL cells inside the coolant STL...
+// 3. Define COOLANT by selecting EVERY SINGLE CELL in the mesh first
+    {
+        name        coolantCells;
+        type        cellSet;
+        action      new;
+        source      boxToCell; // Uses a giant bounding box to select everything
+        box         (-.01 -.01 -.01) (.01 .01 4); // Make sure this covers your entire root box
+    }
+
+    // 4. Subtract the fuel cells from the total pool
+    {
+        name        coolantCells;
+        type        cellSet;
+        action      subtract;
+        source      cellToCell;
+        set         fuelCells;
+    }
+
+    // 5. Subtract the cladding cells from the total pool
+    {
+        name        coolantCells;
+        type        cellSet;
+        action      subtract;
+        source      cellToCell;
+        set         claddingCells;
+    }
+
+    // 6. Convert the finalized, conflict-free sets into your cellZones
+    {
+        name        fuelZone;
+        type        cellZoneSet;
+        action      new;
+        source      setToCellZone;
+        set         fuelCells;
+    }
+    {
+        name        claddingZone;
+        type        cellZoneSet;
+        action      new;
+        source      setToCellZone;
+        set         claddingCells;
+    }
+    {
+        name        coolantZone;
+        type        cellZoneSet;
+        action      new;
+        source      setToCellZone;
+        set         coolantCells;
+    }
+);

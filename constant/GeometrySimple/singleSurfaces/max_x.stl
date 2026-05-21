@@ -1,0 +1,16 @@
+solid Mesh
+  facet normal 1 0 0
+    outer loop
+      vertex 0.006325 0.006325 0.05
+      vertex 0.006325 -0.006325 0.05
+      vertex 0.006325 0.006325 0
+    endloop
+  endfacet
+  facet normal 1 0 0
+    outer loop
+      vertex 0.006325 -0.006325 0.05
+      vertex 0.006325 -0.006325 0
+      vertex 0.006325 0.006325 0
+    endloop
+  endfacet
+endsolid Mesh

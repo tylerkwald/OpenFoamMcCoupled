@@ -1,0 +1,39 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+
+# 1. Clean up any previous broken parallel files and execution logs
+rm -rf processor*
+rm -f log.decomposePar log.reconstructPar log.chtMultiRegionSimpleFoam
+
+# 2. Re-create the symlinks to ensure the regional subfolders point to the master dict
+ln -sf ../decomposeParDict system/coolantZone/decomposeParDict
+ln -sf ../decomposeParDict system/claddingZone/decomposeParDict
+ln -sf ../decomposeParDict system/fuelZone/decomposeParDict
+
+# 3. Decompose ALL mesh regions using the explicit master dictionary path
+runApplication decomposePar -allRegions -decomposeParDict system/decomposeParDict
+
+echo "Copying regional thermophysical and turbulence properties to processors..."
+for proc in processor*
+do
+    cp constant/coolantZone/thermophysicalProperties "$proc/constant/coolantZone/"
+    cp constant/coolantZone/radiationProperties "$proc/constant/coolantZone/"
+    cp constant/coolantZone/radiationProperties "$proc/constant/claddingZone/"
+    cp constant/coolantZone/radiationProperties "$proc/constant/fuelZone/"
+
+    cp constant/coolantZone/turbulenceProperties     "$proc/constant/coolantZone/"
+
+    cp constant/claddingZone/thermophysicalProperties "$proc/constant/claddingZone/"
+
+    cp constant/fuelZone/thermophysicalProperties     "$proc/constant/fuelZone/"
+done
+
+# 4. Run the steady-state conjugate heat transfer solver in parallel (10 cores)
+runParallel $(getApplication)
+
+# 5. Reconstruct all split region data back into a single continuous time series
+runApplication reconstructPar -allRegions
+
+#------------------------------------------------------------------------------

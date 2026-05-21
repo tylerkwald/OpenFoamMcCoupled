@@ -1,0 +1,65 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      decomposeParDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+numberOfSubdomains  8; // Number of CPU cores you want to use
+method              scotch; // Default strategy for all regions
+
+// Global coefficients for the scotch method
+scotchCoeffs
+{
+    writeGraphs     false;
+}
+
+// Region-specific overrides
+regions
+{
+
+    claddingZone
+    {
+        // Cladding is very thin; we can force it to map strictly 
+        // to minimize MPI overhead with the coolant
+        method          scotch;
+    }
+
+    fuelZone
+    {
+        method          scotch;
+    }
+    
+    coolantZone
+    {
+        // Coolant is massive; we use scotch to optimize fluid flow paths
+        method          scotch; 
+    }
+    
+
+}
+
+
+/*
+constraints
+{
+    //- Keep owner and neighbour on same processor for faces in zones:
+    faces
+    {
+        type    preserveFaceZones;
+        zones   (heater solid1 solid3);
+    }
+}
+*/
+
+
+// ************************************************************************* //

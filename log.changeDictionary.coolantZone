@@ -1,0 +1,139 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2412                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _b8cf4d35-20260127 OPENFOAM=2412 patch=260127 version=2412
+Arch   : "LSB;label=32;scalar=64"
+Exec   : changeDictionary -region coolantZone
+Date   : May 21 2026
+Time   : 14:19:02
+Host   : tyler-Precision-3551
+PID    : 142496
+I/O    : uncollated
+Case   : /home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh coolantZone for time = 0
+
+Read dictionary changeDictionaryDict with replacements for dictionaries 10(boundary U T p_rgh p k epsilon nut alphat h)
+Reading polyMesh/boundary file to extract patch names
+Loaded dictionary boundary with entries 7(inlet outlet min_x max_x min_y max_y coolantZone_to_claddingZone)
+Extracted patch groups:
+    group symmetryPlane with patches 4(min_x max_x min_y max_y)
+    group wall with patches 1(coolantZone_to_claddingZone)
+Replacing entries in dictionary boundary
+Special handling of boundary as polyMesh/boundary file.
+Merging entries from 7(inlet outlet min_x max_x min_y max_y coolantZone_to_claddingZone)
+fieldDict:
+{
+    inlet
+    {
+        type            patch;
+        nFaces          9992;
+        startFace       167248;
+    }
+    outlet
+    {
+        type            patch;
+        nFaces          9992;
+        startFace       177240;
+    }
+    min_x
+    {
+        type            symmetryPlane;
+        inGroups        1 ( symmetryPlane );
+        nFaces          768;
+        startFace       187232;
+    }
+    max_x
+    {
+        type            symmetryPlane;
+        inGroups        1 ( symmetryPlane );
+        nFaces          768;
+        startFace       188000;
+    }
+    min_y
+    {
+        type            symmetryPlane;
+        inGroups        1 ( symmetryPlane );
+        nFaces          768;
+        startFace       188768;
+    }
+    max_y
+    {
+        type            symmetryPlane;
+        inGroups        1 ( symmetryPlane );
+        nFaces          768;
+        startFace       189536;
+    }
+    coolantZone_to_claddingZone
+    {
+        type            mappedWall;
+        inGroups        1 ( wall );
+        nFaces          2160;
+        startFace       190304;
+        sampleMode      nearestPatchFace;
+        sampleRegion    claddingZone;
+        samplePatch     claddingZone_to_coolantZone;
+    }
+}
+
+Writing modified boundary
+Replacing entries in dictionary U
+Loading dictionary U
+Loaded dictionary U with entries 3(dimensions internalField boundaryField)
+Merging entries from 2(internalField boundaryField)
+Writing modified fieldDict U
+Replacing entries in dictionary T
+Loading dictionary T
+Loaded dictionary T with entries 3(dimensions internalField boundaryField)
+Merging entries from 2(internalField boundaryField)
+Writing modified fieldDict T
+Replacing entries in dictionary p_rgh
+Loading dictionary p_rgh
+Loaded dictionary p_rgh with entries 3(dimensions internalField boundaryField)
+Merging entries from 2(internalField boundaryField)
+Writing modified fieldDict p_rgh
+Replacing entries in dictionary p
+Loading dictionary p
+Loaded dictionary p with entries 3(dimensions internalField boundaryField)
+Merging entries from 2(internalField boundaryField)
+Writing modified fieldDict p
+Replacing entries in dictionary k
+Loading dictionary k
+Loaded dictionary k with entries 3(dimensions internalField boundaryField)
+Merging entries from 2(internalField boundaryField)
+Writing modified fieldDict k
+Replacing entries in dictionary epsilon
+Loading dictionary epsilon
+Loaded dictionary epsilon with entries 3(dimensions internalField boundaryField)
+Merging entries from 2(internalField boundaryField)
+Writing modified fieldDict epsilon
+Replacing entries in dictionary nut
+Loading dictionary nut
+Loaded dictionary nut with entries 3(dimensions internalField boundaryField)
+Merging entries from 2(internalField boundaryField)
+Writing modified fieldDict nut
+Replacing entries in dictionary alphat
+Loading dictionary alphat
+Loaded dictionary alphat with entries 3(dimensions internalField boundaryField)
+Merging entries from 2(internalField boundaryField)
+Writing modified fieldDict alphat
+Replacing entries in dictionary h
+Loading dictionary h
+--> FOAM Warning : 
+    From int main(int, char**)
+    in file changeDictionary.C at line 703
+    Requested field to change h does not exist in "/home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin/0/coolantZone"
+
+End
+

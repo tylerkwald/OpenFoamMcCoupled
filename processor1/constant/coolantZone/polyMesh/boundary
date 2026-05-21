@@ -1,0 +1,95 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2412                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       polyBoundaryMesh;
+    location    "constant/coolantZone/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+9
+(
+    inlet
+    {
+        type            patch;
+        nFaces          1239;
+        startFace       20547;
+    }
+    outlet
+    {
+        type            patch;
+        nFaces          1239;
+        startFace       21786;
+    }
+    min_x
+    {
+        type            symmetryPlane;
+        inGroups        1(symmetryPlane);
+        nFaces          318;
+        startFace       23025;
+    }
+    max_x
+    {
+        type            symmetryPlane;
+        inGroups        1(symmetryPlane);
+        nFaces          0;
+        startFace       23343;
+    }
+    min_y
+    {
+        type            symmetryPlane;
+        inGroups        1(symmetryPlane);
+        nFaces          0;
+        startFace       23343;
+    }
+    max_y
+    {
+        type            symmetryPlane;
+        inGroups        1(symmetryPlane);
+        nFaces          96;
+        startFace       23343;
+    }
+    coolantZone_to_claddingZone
+    {
+        type            mappedWall;
+        inGroups        2(wall mappedPatch);
+        nFaces          204;
+        startFace       23439;
+        sampleMode      nearestPatchFace;
+        sampleRegion    claddingZone;
+        samplePatch     claddingZone_to_coolantZone;
+    }
+    procBoundary1to0
+    {
+        type            processor;
+        inGroups        1(processor);
+        nFaces          288;
+        startFace       23643;
+        matchTolerance  0.0001;
+        transform       unknown;
+        myProcNo        1;
+        neighbProcNo    0;
+    }
+    procBoundary1to7
+    {
+        type            processor;
+        inGroups        1(processor);
+        nFaces          126;
+        startFace       23931;
+        matchTolerance  0.0001;
+        transform       unknown;
+        myProcNo        1;
+        neighbProcNo    7;
+    }
+)
+
+// ************************************************************************* //

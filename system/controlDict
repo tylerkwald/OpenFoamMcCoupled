@@ -1,0 +1,85 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     chtMultiRegionFoam; // Changed from simple solver
+
+startFrom       latestTime;
+
+startTime       0.001;
+
+stopAt          endTime;
+
+endTime         1;                 // Run for a few seconds of physical time
+
+// FIX: Enable dynamic time-stepping for rock-solid stability
+adjustTimeStep  yes;
+maxCo           0.1;    // Lowered from 0.5/1.0 to brutally restrict velocity spikes
+maxAlphaCo      0.1;    // Restricts thermal diffusion jumps
+maxDeltaT       1e-6;   // Hard cap on how large the time step is allowed to grow
+deltaT          1e-7;   // Start the simulation 10x slower than before
+writeControl    adjustable;
+
+writeInterval   1000;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  8;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable yes;
+
+
+// Maximum diffusion number
+maxDi           10.0;
+
+adjustTimeStep  yes;
+
+functions
+{
+    #include "vtkWrite"
+}
+derivedFields
+{
+    h
+    {
+        patchType       zeroGradient;
+    }
+    p
+    {
+        patchType       calculated;
+    }
+}
+prereadOptions
+{
+    energyScaling
+    {
+        type            scalarMinMax;
+        libs            (fieldFunctionObjects);
+        field           T;
+        min             298.15; // Floored at 25°C
+        max             3000.0; // Max ceiling for safety
+    }
+}
+
+
+// ************************************************************************* //

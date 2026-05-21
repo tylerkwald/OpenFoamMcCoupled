@@ -1,0 +1,100 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2412                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       dictionary;
+    location    "system/coolantZone";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    rho
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-7;
+        relTol          0.1;
+    }
+
+    rhoFinal
+    {
+        $rho;
+        tolerance       1e-7;
+        relTol          0;
+    }
+
+    p_rgh
+    {
+        solver           GAMG;
+        tolerance        1e-7;
+        relTol           0.01;
+        smoother         GaussSeidel;
+    }
+
+    p_rghFinal
+    {
+        $p_rgh;
+        tolerance        1e-7;
+        relTol           0;
+    }
+
+    "(U|h|k|epsilon|R)"
+    {
+        solver           PBiCGStab;
+        preconditioner   DILU;
+        tolerance        1e-7;
+        relTol           0.1;
+    }
+
+    "(U|h|k|epsilon|R)Final"
+    {
+        solver           PBiCGStab;
+        preconditioner   DILU;
+        tolerance        1e-7;
+        relTol           0;
+    }
+}
+
+PIMPLE
+{
+    momentumPredictor   yes;
+    nOuterCorrectors    3;  // Syncs multi-region matrices 3 times per time step
+    nCorrectors         2;
+    nNonOrthogonalCorrectors 1;
+    pMin            1.7e7;   // Floor limiting enthalpy to liquid water ranges
+    Pmax            1.4e7;  // Ceiling preventing unphysical spikes
+}
+limitModes
+    {
+        h               both; 
+    }
+    hMin            500000;   // Floor limiting enthalpy to liquid water ranges
+    hMax            3500000;  // Ceiling preventing unphysical spikes
+
+relaxationFactors
+{
+    fields
+    {
+        rho             0.5; // Dampens wild density swings
+        p_rgh           0.5; // Smooths pressure spikes
+    }
+    equations
+    {
+        U               0.7; // Smooths momentum acceleration
+        h               0.7; 
+        "(k|epsilon).*" 0.7;
+    }
+}
+
+
+// ************************************************************************* //

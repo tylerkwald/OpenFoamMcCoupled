@@ -1,0 +1,82 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2412                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       polyBoundaryMesh;
+    location    "constant/coolantZone/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+7
+(
+    inlet
+    {
+        type            patch;
+        nFaces          9992;
+        startFace       167248;
+    }
+
+    outlet
+    {
+        type            patch;
+        nFaces          9992;
+        startFace       177240;
+    }
+
+    min_x
+    {
+        type            symmetryPlane;
+        inGroups        1 ( symmetryPlane );
+        nFaces          768;
+        startFace       187232;
+    }
+
+    max_x
+    {
+        type            symmetryPlane;
+        inGroups        1 ( symmetryPlane );
+        nFaces          768;
+        startFace       188000;
+    }
+
+    min_y
+    {
+        type            symmetryPlane;
+        inGroups        1 ( symmetryPlane );
+        nFaces          768;
+        startFace       188768;
+    }
+
+    max_y
+    {
+        type            symmetryPlane;
+        inGroups        1 ( symmetryPlane );
+        nFaces          768;
+        startFace       189536;
+    }
+
+    coolantZone_to_claddingZone
+    {
+        type            mappedWall;
+        inGroups        1 ( wall );
+        nFaces          2160;
+        startFace       190304;
+        sampleMode      nearestPatchFace;
+        sampleRegion    claddingZone;
+        samplePatch     claddingZone_to_coolantZone;
+    }
+
+)
+
+
+// ************************************************************************* //

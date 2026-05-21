@@ -1,0 +1,58 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      nut;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -1 0 0 0 0]; // Units: m^2/s
+
+internalField   uniform 1e-5;      // Small baseline placeholder value
+
+boundaryField
+{
+    inlet
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    outlet
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    min_x
+    {
+        type            symmetryPlane;
+    }
+    max_x
+    {
+        type            symmetryPlane;
+    }
+    min_y
+    {
+        type            symmetryPlane;
+    }
+    max_y
+    {
+        type            symmetryPlane;
+    }
+    coolantZone_to_claddingZone
+    {
+        type            nutkWallFunction;
+        value           uniform 1e-5;     // Estimated initial wall value
+    }
+}
+
+
+// ************************************************************************* //
+

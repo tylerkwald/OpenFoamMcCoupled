@@ -1,0 +1,234 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Version:  v2412
+    \\  /    A nd           | Website:  www.openfoam.com
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      changeDictionaryDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+boundary
+{
+    inlet                       { type patch; }
+    outlet                      { type patch; }
+    min_x                       { type symmetryPlane; }
+    max_x                       { type symmetryPlane; }
+    min_y                       { type symmetryPlane; }
+    max_y                       { type symmetryPlane; }
+    coolantZone_to_claddingZone { type mappedWall; }
+}
+
+U
+{
+    internalField   uniform (0 0 4); // 4 m/s axial flow velocity in Z
+    boundaryField
+    {
+        inlet
+        {
+            type            fixedValue;
+            value           uniform (0 0 4);
+        }
+        outlet
+        {
+            type            inletOutlet;
+            inletValue      uniform (0 0 0);
+            value           uniform (0 0 4);
+        }
+        coolantZone_to_claddingZone
+        {
+            type            noSlip; // No-slip condition at the cladding wall
+        }
+        min_x                       { type symmetryPlane; }
+        max_x                       { type symmetryPlane; }
+        min_y                       { type symmetryPlane; }
+        max_y                       { type symmetryPlane; }
+    }
+}
+
+T
+{
+    internalField   uniform 550; // Core inlet fluid temperature placeholder (K)
+    boundaryField
+    {
+        inlet
+        {
+            type            fixedValue;
+            value           uniform 550;
+        }
+        outlet
+        {
+            type            inletOutlet;
+            inletValue      uniform 550;
+            value           uniform 550;
+        }
+        coolantZone_to_claddingZone
+        {
+            type            compressible::turbulentTemperatureRadCoupledMixed;
+            Tmesh           T;
+            kappaMethod     fluidThermo; // Computes local turbulent heat flux
+            value           uniform 550;
+        }
+        min_x                       { type symmetryPlane; }
+        max_x                       { type symmetryPlane; }
+        min_y                       { type symmetryPlane; }
+        max_y                       { type symmetryPlane; }
+    }
+}
+
+p_rgh
+{
+    internalField   uniform 0; // 157 bar operating pressure in Pa
+    boundaryField
+    {
+        inlet
+        {
+            type            fixedFluxPressure;
+            value           uniform 0;
+        }
+    outlet
+    {
+        type            totalPressure;
+        p0              uniform 0;
+    }
+
+        coolantZone_to_claddingZone
+        {
+            type            fixedFluxPressure;
+            value           uniform 0;
+        }
+        min_x                       { type symmetryPlane; }
+        max_x                       { type symmetryPlane; }
+        min_y                       { type symmetryPlane; }
+        max_y                       { type symmetryPlane; }
+    }
+}
+
+p
+{
+    internalField   uniform 15700000;
+    boundaryField
+    {
+        inlet                       { type calculated; value uniform 15700000; }
+        outlet                      { type calculated; value uniform 15700000; }
+        coolantZone_to_claddingZone { type calculated; value uniform 15700000; }
+        min_x                       { type symmetryPlane; }
+        max_x                       { type symmetryPlane; }
+        min_y                       { type symmetryPlane; }
+        max_y                       { type symmetryPlane; }
+    }
+}
+
+k
+{
+    internalField   uniform 0.06;
+    boundaryField
+    {
+        inlet                       { type fixedValue; value uniform 0.06; }
+        outlet                      { type inletOutlet; inletValue uniform 0.06; value uniform 0.06; }
+        coolantZone_to_claddingZone { type kqRWallFunction; value uniform 0.06; }
+        min_x                       { type symmetryPlane; }
+        max_x                       { type symmetryPlane; }
+        min_y                       { type symmetryPlane; }
+        max_y                       { type symmetryPlane; }
+    }
+}
+
+epsilon
+{
+    internalField   uniform 0.17;
+    boundaryField
+    {
+        inlet                       { type fixedValue; value uniform 0.17; }
+        outlet                      { type inletOutlet; inletValue uniform 0.17; value uniform 0.17; }
+        coolantZone_to_claddingZone { type epsilonWallFunction; value uniform 0.17; }
+        min_x                       { type symmetryPlane; }
+        max_x                       { type symmetryPlane; }
+        min_y                       { type symmetryPlane; }
+        max_y                       { type symmetryPlane; }
+    }
+}
+
+nut
+{
+    internalField   uniform 1e-5;
+    boundaryField
+    {
+        inlet
+        {
+            type            fixedValue;
+            value           uniform 1e-5; // A small, physically realistic freestream eddy viscosity floor
+        }        
+        outlet                      { type zeroGradient; }
+        coolantZone_to_claddingZone { type nutkWallFunction; value uniform 1e-5; }
+        min_x                       { type symmetryPlane; }
+        max_x                       { type symmetryPlane; }
+        min_y                       { type symmetryPlane; }
+        max_y                       { type symmetryPlane; }
+    }
+}
+
+alphat
+{
+    internalField   uniform 0;
+    boundaryField
+    {
+       inlet
+        {
+            type            fixedValue;
+            value           uniform 1e-5; // A small, physically realistic freestream eddy viscosity floor
+        }
+        outlet                      { type zeroGradient; }
+        
+        // FIX: Change type to include the compressible namespace prefix
+        coolantZone_to_claddingZone 
+        { 
+            type            compressible::alphatWallFunction; 
+            Prt             0.85; 
+            value           uniform 0; 
+        }
+        
+        min_x                       { type symmetryPlane; }
+        max_x                       { type symmetryPlane; }
+        min_y                       { type symmetryPlane; }
+        max_y                       { type symmetryPlane; }
+    }
+}
+
+h
+{
+    internalField   uniform 2330000; // Reference enthalpy matching ~550K water at 157 bar
+    boundaryField
+    {
+        inlet
+        {
+            type            fixedValue;
+            value           uniform 2330000;
+        }
+        outlet
+        {
+            type            inletOutlet;
+            inletValue      uniform 2330000;
+            value           uniform 2330000;
+        }
+        coolantZone_to_claddingZone
+        {
+            // This couples the fluid enthalpy matrix directly to the solid conduction matrix
+            type            compressible::turbulentTemperatureRadCoupledMixed;
+            Tmesh           T;
+            kappaMethod     fluidThermo;
+            value           uniform 2330000;
+        }
+        min_x                       { type symmetryPlane; }
+        max_x                       { type symmetryPlane; }
+        min_y                       { type symmetryPlane; }
+        max_y                       { type symmetryPlane; }
+    }
+}
+// ************************************************************************* //

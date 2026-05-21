@@ -1,0 +1,31 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      turbulenceProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+simulationType  laminar; //RAS; // Reynolds-Averaged Navier-Stokes
+
+RAS
+{
+    // The core RANS model selection
+    RASModel        kEpsilon;
+
+    // Switch to activate/deactivate turbulence modeling equations
+    turbulence      on;
+
+    // Print model coefficients to the log file on initialization
+    printCoeffs     on;
+}
+
+// ************************************************************************* //

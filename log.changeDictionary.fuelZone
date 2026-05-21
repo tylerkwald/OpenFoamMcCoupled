@@ -1,0 +1,80 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2412                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _b8cf4d35-20260127 OPENFOAM=2412 patch=260127 version=2412
+Arch   : "LSB;label=32;scalar=64"
+Exec   : changeDictionary -region fuelZone
+Date   : May 21 2026
+Time   : 14:19:02
+Host   : tyler-Precision-3551
+PID    : 142498
+I/O    : uncollated
+Case   : /home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh fuelZone for time = 0
+
+Read dictionary changeDictionaryDict with replacements for dictionaries 4(boundary T p h)
+Reading polyMesh/boundary file to extract patch names
+Loaded dictionary boundary with entries 3(inlet outlet fuelZone_to_claddingZone)
+Extracted patch groups:
+    group wall with patches 1(fuelZone_to_claddingZone)
+Replacing entries in dictionary boundary
+Special handling of boundary as polyMesh/boundary file.
+Merging entries from 3(inlet outlet fuelZone_to_claddingZone)
+fieldDict:
+{
+    inlet
+    {
+        type            patch;
+        nFaces          5188;
+        startFace       87212;
+    }
+    outlet
+    {
+        type            patch;
+        nFaces          5188;
+        startFace       92400;
+    }
+    fuelZone_to_claddingZone
+    {
+        type            mappedWall;
+        inGroups        1 ( wall );
+        nFaces          1968;
+        startFace       97588;
+        sampleMode      nearestPatchFace;
+        sampleRegion    claddingZone;
+        samplePatch     claddingZone_to_fuelZone;
+    }
+}
+
+Writing modified boundary
+Replacing entries in dictionary T
+Loading dictionary T
+Loaded dictionary T with entries 3(dimensions internalField boundaryField)
+Merging entries from 2(internalField boundaryField)
+Writing modified fieldDict T
+Replacing entries in dictionary p
+Loading dictionary p
+Loaded dictionary p with entries 3(dimensions internalField boundaryField)
+Merging entries from 2(internalField boundaryField)
+Writing modified fieldDict p
+Replacing entries in dictionary h
+Loading dictionary h
+--> FOAM Warning : 
+    From int main(int, char**)
+    in file changeDictionary.C at line 703
+    Requested field to change h does not exist in "/home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin/0/fuelZone"
+
+End
+

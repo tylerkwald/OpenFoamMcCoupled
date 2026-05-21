@@ -1,0 +1,50 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+thermoType
+{
+    type            heSolidThermo;
+    mixture         pureMixture;
+    transport       constIso;      // Constant isotropic thermal conductivity
+    thermo          hConst;         // Constant specific heat capacity (Cp)
+    equationOfState rhoConst;       // Constant density solid model
+    specie          specie;
+    energy          sensibleEnthalpy;
+}
+
+
+mixture
+{
+    specie
+    {
+        molWeight       91.22;      // Molecular weight of Zirconium (g/mol)
+    }
+    transport
+    {
+        kappa           16.0;       // Thermal conductivity of Zircaloy-4 (W/m*K)
+    }
+    thermodynamics
+    {
+        Hf              0;
+        Cp              330;        // Specific heat capacity of Zircaloy-4 (J/kg*K)
+    }
+    equationOfState
+    {
+        rho             6560;       // Density of Zircaloy-4 (kg/m^3)
+    }
+}
+
+// ************************************************************************* //

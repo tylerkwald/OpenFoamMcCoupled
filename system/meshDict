@@ -1,0 +1,60 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     |
+    \\  /    A nd           |
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      meshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+surfaceFile "constant/GeometrySimple/bounding.stl";
+
+// ── Baseline Coarse Cell Sizes (Z-Direction Focus) ───────────────────────
+maxCellSize         0.01;    
+smoothingIterations    20; // Default is usually lower; bump it up
+maxIterationSteps      50;
+anisotropicSources
+{
+    coarserZDirection
+    {
+        type        box;
+        centre      (0 0 1.84);
+        lengthX     0.014;
+        lengthY     0.014;
+        lengthZ     0.05;
+        min         (-0.007 -0.007 -0.001);
+        max         (0.007 0.007 0.05);
+        
+        // New Multipliers:
+        // 0.015 * 0.0033333 = 0.00005 m (50 microns) in X and Y
+        // 0.015 * 1.0       = 0.015 m (15 mm) in Z
+        scaleX      0.01;
+        scaleY      0.01;
+        scaleZ      1.0;
+    }
+}
+
+// ── Patch Naming ──────────────────────────────────────────────────────────
+renameBoundary
+{
+    defaultName     walls;
+    defaultType     wall;
+    newPatchNames
+    {
+        min_z   { newName inlet;    type patch; }
+        max_z   { newName outlet;   type patch; }
+        min_x   { newName min_x;    type symmetryPlane; }
+        max_x   { newName max_x;    type symmetryPlane; }
+        min_y   { newName min_y;    type symmetryPlane; }
+        max_y   { newName max_y;    type symmetryPlane; }
+    }
+}
+
+// ************************************************************************* //

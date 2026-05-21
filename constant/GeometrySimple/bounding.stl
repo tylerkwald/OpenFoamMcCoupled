@@ -1,0 +1,96 @@
+solid max_z
+  facet normal 0 0 1
+    outer loop
+      vertex -0.006325 0.006325 0.05
+      vertex -0.006325 -0.006325 0.05
+      vertex 0.006325 0.006325 0.05
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex -0.006325 -0.006325 0.05
+      vertex 0.006325 -0.006325 0.05
+      vertex 0.006325 0.006325 0.05
+    endloop
+  endfacet
+endsolid max_z
+solid max_y
+  facet normal 0 1 0
+    outer loop
+      vertex -0.006325 0.006325 0.05
+      vertex 0.006325 0.006325 0.05
+      vertex -0.006325 0.006325 0
+    endloop
+  endfacet
+  facet normal 0 1 0
+    outer loop
+      vertex 0.006325 0.006325 0.05
+      vertex 0.006325 0.006325 0
+      vertex -0.006325 0.006325 0
+    endloop
+  endfacet
+endsolid max_y
+solid max_x
+  facet normal 1 0 0
+    outer loop
+      vertex 0.006325 0.006325 0.05
+      vertex 0.006325 -0.006325 0.05
+      vertex 0.006325 0.006325 0
+    endloop
+  endfacet
+  facet normal 1 0 0
+    outer loop
+      vertex 0.006325 -0.006325 0.05
+      vertex 0.006325 -0.006325 0
+      vertex 0.006325 0.006325 0
+    endloop
+  endfacet
+endsolid max_x
+solid min_y
+  facet normal 0 -1 0
+    outer loop
+      vertex 0.006325 -0.006325 0.05
+      vertex -0.006325 -0.006325 0.05
+      vertex 0.006325 -0.006325 0
+    endloop
+  endfacet
+  facet normal 0 -1 0
+    outer loop
+      vertex -0.006325 -0.006325 0.05
+      vertex -0.006325 -0.006325 0
+      vertex 0.006325 -0.006325 0
+    endloop
+  endfacet
+endsolid min_y
+solid min_x
+  facet normal -1 0 0
+    outer loop
+      vertex -0.006325 -0.006325 0.05
+      vertex -0.006325 0.006325 0.05
+      vertex -0.006325 -0.006325 0
+    endloop
+  endfacet
+  facet normal -1 0 0
+    outer loop
+      vertex -0.006325 0.006325 0.05
+      vertex -0.006325 0.006325 0
+      vertex -0.006325 -0.006325 0
+    endloop
+  endfacet
+endsolid min_x
+solid min_z
+  facet normal 0 0 -1
+    outer loop
+      vertex -0.006325 -0.006325 0
+      vertex -0.006325 0.006325 0
+      vertex 0.006325 -0.006325 0
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex -0.006325 0.006325 0
+      vertex 0.006325 0.006325 0
+      vertex 0.006325 -0.006325 0
+    endloop
+  endfacet
+endsolid min_z

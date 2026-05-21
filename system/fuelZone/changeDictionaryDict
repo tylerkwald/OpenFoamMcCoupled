@@ -1,0 +1,66 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Version:  v2412
+    \\  /    A nd           |
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      changeDictionaryDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+boundary
+{
+    inlet                       { type patch; }
+    outlet                       { type patch; }
+    fuelZone_to_claddingZone    { type mappedWall; }
+}
+
+T
+{
+    internalField   uniform 1200; // Estimated peak operational fuel temperature (K)
+    boundaryField
+    {
+        inlet                       { type zeroGradient; }
+        outlet                      { type zeroGradient; }
+        fuelZone_to_claddingZone
+        {
+            type            compressible::turbulentTemperatureRadCoupledMixed;
+            Tmesh           T;
+            kappaMethod     solidThermo;
+            value           uniform 1200;
+        }
+    }
+}
+
+p
+{
+    internalField   uniform 15700000;
+    boundaryField
+    {
+        inlet                       { type calculated; value uniform 15700000; }
+        outlet                      { type calculated; value uniform 15700000; }
+        fuelZone_to_claddingZone    { type calculated; value uniform 15700000; }
+
+    }
+}
+
+h
+{
+    internalField   uniform 2330000;
+    boundaryField
+    {
+        fuelZone_to_claddingZone    { type calculated; value uniform 2330000; }
+        
+        // FIX: Provide explicit physical constraints for the external boundaries
+        inlet                       { type zeroGradient; }
+        outlet                      { type zeroGradient; }
+
+    }
+}
+// ************************************************************************* //

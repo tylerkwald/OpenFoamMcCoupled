@@ -1,0 +1,56 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+thermoType
+{
+    type            heRhoThermo;      
+    mixture         pureMixture;
+    transport       polynomial;       
+    thermo          hPolynomial;      
+    equationOfState icoPolynomial;    // FIX: Changed from polynomial to icoPolynomial
+    specie          specie;
+    energy          sensibleEnthalpy;
+}
+
+mixture
+{
+    specie
+    {
+        molWeight       18.015;
+    }
+    equationOfState
+    {
+        // Polynomial coefficients for liquid water density (kg/m^3) f(T)
+        rhoCoeffs<8>   ( 741.97 5.231 -0.0175 2.11e-5 -1.1e-8 0 0 0 );
+    }
+    thermodynamics
+    {
+        // Polynomial coefficients for Specific Heat Cp (J/kg.K) f(T)
+        CpCoeffs<8>    ( 10103 -42.82 0.144 -2.1e-4 1.16e-7 0 0 0 );
+        Hf              0;
+        Sf              0;
+    }
+    transport
+    {
+        // Polynomial coefficients for dynamic viscosity (Pa.s) f(T)
+        muCoeffs<8>    ( 0.0113 -8.2e-5 2.3e-7 -2.9e-10 1.4e-13 0 0 0 );
+        // Polynomial coefficients for thermal conductivity (W/m.K) f(T)
+        kappaCoeffs<8> ( -0.67 0.0071 -1.4e-5 1.2e-8 -3.8e-12 0 0 0 );
+    }
+}
+
+
+// ************************************************************************* //
