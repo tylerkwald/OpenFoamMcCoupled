@@ -84,24 +84,24 @@ T
 
 p_rgh
 {
-    internalField   uniform 0; // 157 bar operating pressure in Pa
+    internalField   uniform 1.57e7; // 157 bar operating pressure in Pa
     boundaryField
     {
         inlet
         {
             type            fixedFluxPressure;
-            value           uniform 0;
+            value           uniform 1.57e7;
         }
     outlet
     {
         type            totalPressure;
-        p0              uniform 0;
+        p0              uniform 1.57e7;
     }
 
         coolantZone_to_claddingZone
         {
             type            fixedFluxPressure;
-            value           uniform 0;
+            value           uniform 1.57e7;
         }
         min_x                       { type symmetryPlane; }
         max_x                       { type symmetryPlane; }
