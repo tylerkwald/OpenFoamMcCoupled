@@ -37,9 +37,7 @@ U
         }
         outlet
         {
-            type            inletOutlet;
-            inletValue      uniform (0 0 0);
-            value           uniform (0 0 4);
+            type            zeroGradient;
         }
         coolantZone_to_claddingZone
         {
@@ -64,9 +62,7 @@ T
         }
         outlet
         {
-            type            inletOutlet;
-            inletValue      uniform 550;
-            value           uniform 550;
+            type            zeroGradient;
         }
         coolantZone_to_claddingZone
         {

@@ -25,13 +25,11 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value           uniform (0 0 4);
+        value           nonuniform List<vector> 0();
     }
     outlet
     {
-        type            inletOutlet;
-        inletValue      uniform (0 0 0);
-        value           uniform (0 0 4);
+        type            zeroGradient;
     }
     min_x
     {
@@ -53,12 +51,17 @@ boundaryField
     {
         type            noSlip;
     }
-    procBoundary6to5
+    procBoundary6to7
     {
         type            processor;
         value           uniform (0 0 4);
     }
-    procBoundary6to7
+    procBoundary6to8
+    {
+        type            processor;
+        value           uniform (0 0 4);
+    }
+    procBoundary6to9
     {
         type            processor;
         value           uniform (0 0 4);

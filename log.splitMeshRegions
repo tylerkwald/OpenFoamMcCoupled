@@ -8,10 +8,10 @@
 Build  : _b8cf4d35-20260127 OPENFOAM=2412 patch=260127 version=2412
 Arch   : "LSB;label=32;scalar=64"
 Exec   : splitMeshRegions -cellZonesOnly -overwrite
-Date   : May 21 2026
-Time   : 14:19:00
+Date   : May 24 2026
+Time   : 18:15:28
 Host   : tyler-Precision-3551
-PID    : 142489
+PID    : 22287
 I/O    : uncollated
 Case   : /home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin
 nProcs : 1
@@ -37,9 +37,9 @@ Writing region per cell as volScalarField to "/home/tyler/OpenFOAM/tyler-v2412/r
 
 Region	Cells
 ------	-----
-0	31128
-1	7224
-2	59952
+0	246560
+1	40480
+2	466624
 
 Region	Zone	Name
 ------	----	----
@@ -51,8 +51,8 @@ Sizes of interfaces between regions:
 
 Interface	Region	Region	Faces
 ---------	------	------	-----
-0		0	1	1968
-1		1	2	2160
+0		0	1	30912
+1		1	2	32384
 
 Reading volScalarField: cellToRegion
 

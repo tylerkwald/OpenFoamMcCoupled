@@ -16,79 +16,134 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-9
+14
 (
     inlet
     {
         type            patch;
-        nFaces          1248;
-        startFace       20682;
+        nFaces          0;
+        startFace       112607;
     }
     outlet
     {
         type            patch;
-        nFaces          1248;
-        startFace       21930;
+        nFaces          0;
+        startFace       112607;
     }
     min_x
     {
         type            symmetryPlane;
         inGroups        1(symmetryPlane);
-        nFaces          336;
-        startFace       23178;
+        nFaces          0;
+        startFace       112607;
     }
     max_x
     {
         type            symmetryPlane;
         inGroups        1(symmetryPlane);
-        nFaces          0;
-        startFace       23514;
+        nFaces          2435;
+        startFace       112607;
     }
     min_y
     {
         type            symmetryPlane;
         inGroups        1(symmetryPlane);
-        nFaces          0;
-        startFace       23514;
+        nFaces          555;
+        startFace       115042;
     }
     max_y
     {
         type            symmetryPlane;
         inGroups        1(symmetryPlane);
-        nFaces          0;
-        startFace       23514;
+        nFaces          1045;
+        startFace       115597;
     }
     coolantZone_to_claddingZone
     {
         type            mappedWall;
         inGroups        2(wall mappedPatch);
-        nFaces          324;
-        startFace       23514;
+        nFaces          2633;
+        startFace       116642;
         sampleMode      nearestPatchFace;
         sampleRegion    claddingZone;
         samplePatch     claddingZone_to_coolantZone;
     }
-    procBoundary7to1
+    procBoundary7to2
     {
         type            processor;
         inGroups        1(processor);
-        nFaces          126;
-        startFace       23838;
+        nFaces          857;
+        startFace       119275;
         matchTolerance  0.0001;
         transform       unknown;
         myProcNo        7;
-        neighbProcNo    1;
+        neighbProcNo    2;
+    }
+    procBoundary7to3
+    {
+        type            processor;
+        inGroups        1(processor);
+        nFaces          180;
+        startFace       120132;
+        matchTolerance  0.0001;
+        transform       unknown;
+        myProcNo        7;
+        neighbProcNo    3;
+    }
+    procBoundary7to4
+    {
+        type            processor;
+        inGroups        1(processor);
+        nFaces          798;
+        startFace       120312;
+        matchTolerance  0.0001;
+        transform       unknown;
+        myProcNo        7;
+        neighbProcNo    4;
     }
     procBoundary7to6
     {
         type            processor;
         inGroups        1(processor);
-        nFaces          282;
-        startFace       23964;
+        nFaces          794;
+        startFace       121110;
         matchTolerance  0.0001;
         transform       unknown;
         myProcNo        7;
         neighbProcNo    6;
+    }
+    procBoundary7to8
+    {
+        type            processor;
+        inGroups        1(processor);
+        nFaces          656;
+        startFace       121904;
+        matchTolerance  0.0001;
+        transform       unknown;
+        myProcNo        7;
+        neighbProcNo    8;
+    }
+    procBoundary7to9
+    {
+        type            processor;
+        inGroups        1(processor);
+        nFaces          140;
+        startFace       122560;
+        matchTolerance  0.0001;
+        transform       unknown;
+        myProcNo        7;
+        neighbProcNo    9;
+    }
+    procBoundary7to10
+    {
+        type            processor;
+        inGroups        1(processor);
+        nFaces          331;
+        startFace       122700;
+        matchTolerance  0.0001;
+        transform       unknown;
+        myProcNo        7;
+        neighbProcNo    10;
     }
 )
 

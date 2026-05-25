@@ -35,22 +35,22 @@ boundaryField
         type            calculated;
         value           uniform 0;
     }
-    procBoundary3to0
-    {
-        type            processor;
-        value           uniform 0;
-    }
-    procBoundary3to2
-    {
-        type            processor;
-        value           uniform 0;
-    }
     procBoundary3to4
     {
         type            processor;
         value           uniform 0;
     }
-    procBoundary3to6
+    procBoundary3to5
+    {
+        type            processor;
+        value           uniform 0;
+    }
+    procBoundary3to9
+    {
+        type            processor;
+        value           uniform 0;
+    }
+    procBoundary3to11
     {
         type            processor;
         value           uniform 0;

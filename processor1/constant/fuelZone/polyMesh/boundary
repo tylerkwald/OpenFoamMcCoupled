@@ -16,26 +16,26 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-5
+7
 (
     inlet
     {
         type            patch;
-        nFaces          651;
-        startFace       10689;
+        nFaces          0;
+        startFace       58218;
     }
     outlet
     {
         type            patch;
-        nFaces          651;
-        startFace       11340;
+        nFaces          0;
+        startFace       58218;
     }
     fuelZone_to_claddingZone
     {
         type            mappedWall;
         inGroups        2(wall mappedPatch);
-        nFaces          360;
-        startFace       11991;
+        nFaces          2632;
+        startFace       58218;
         sampleMode      nearestPatchFace;
         sampleRegion    claddingZone;
         samplePatch     claddingZone_to_fuelZone;
@@ -44,23 +44,45 @@ FoamFile
     {
         type            processor;
         inGroups        1(processor);
-        nFaces          216;
-        startFace       12351;
+        nFaces          869;
+        startFace       60850;
         matchTolerance  0.0001;
         transform       unknown;
         myProcNo        1;
         neighbProcNo    0;
     }
+    procBoundary1to2
+    {
+        type            processor;
+        inGroups        1(processor);
+        nFaces          1207;
+        startFace       61719;
+        matchTolerance  0.0001;
+        transform       unknown;
+        myProcNo        1;
+        neighbProcNo    2;
+    }
     procBoundary1to4
     {
         type            processor;
         inGroups        1(processor);
-        nFaces          180;
-        startFace       12567;
+        nFaces          387;
+        startFace       62926;
         matchTolerance  0.0001;
         transform       unknown;
         myProcNo        1;
         neighbProcNo    4;
+    }
+    procBoundary1to5
+    {
+        type            processor;
+        inGroups        1(processor);
+        nFaces          515;
+        startFace       63313;
+        matchTolerance  0.0001;
+        transform       unknown;
+        myProcNo        1;
+        neighbProcNo    5;
     }
 )
 

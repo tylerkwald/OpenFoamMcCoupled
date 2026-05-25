@@ -1,0 +1,323 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2412                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _b8cf4d35-20260127 OPENFOAM=2412 patch=260127 version=2412
+Arch   : "LSB;label=32;scalar=64"
+Exec   : chtMultiRegionSimpleFoam -parallel
+Date   : May 24 2026
+Time   : 18:15:57
+Host   : tyler-Precision-3551
+PID    : 22475
+I/O    : uncollated
+Case   : /home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin
+nProcs : 12
+Hosts  :
+(
+    (tyler-Precision-3551 12)
+)
+Pstream initialized with:
+    floatTransfer      : false
+    maxCommsSize       : 0
+    nProcsSimpleSum    : 0
+    nonBlockingExchange: 0 (tuning: 0)
+    exchange algorithm : 0
+    commsType          : nonBlocking
+    polling iterations : 0
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create fluid mesh for region coolantZone for time = 0
+
+Create solid mesh for region claddingZone for time = 0
+
+Create solid mesh for region fuelZone for time = 0
+
+*** Reading fluid mesh thermophysical properties for region coolantZone
+
+    Adding to thermoFluid
+
+Selecting thermodynamics package 
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       polynomial;
+    thermo          hPolynomial;
+    equationOfState icoPolynomial;
+    specie          specie;
+    energy          sensibleEnthalpy;
+}
+
+    Adding to rhoFluid
+
+    Adding to UFluid
+
+    Adding to phiFluid
+
+    Adding to hRefFluid
+
+    Adding to ghFluid
+
+    Adding to ghfFluid
+
+    Adding to turbulence
+
+Selecting turbulence model type RAS
+Selecting RAS turbulence model kEpsilon
+RAS
+{
+    RASModel        kEpsilon;
+    turbulence      on;
+    printCoeffs     on;
+    Cmu             0.09;
+    C1              1.44;
+    C2              1.92;
+    C3              0;
+    sigmak          1;
+    sigmaEps        1.3;
+}
+
+Selecting radiationModel none
+    Adding MRF
+
+No MRF models present
+
+    Adding fvOptions
+
+Creating finite volume options from "system/fvOptions"
+
+Selecting finite volume options type limitTemperature
+    Source: limitT
+    - selecting all cells
+    - selected 466624 cell(s) with volume 0.0003524448
+*** Reading solid mesh thermophysical properties for region claddingZone
+
+    Adding to thermos
+
+Selecting thermodynamics package 
+{
+    type            heSolidThermo;
+    mixture         pureMixture;
+    transport       constIso;
+    thermo          hConst;
+    equationOfState rhoConst;
+    specie          specie;
+    energy          sensibleEnthalpy;
+}
+
+    Adding to radiations
+
+Selecting radiationModel none
+    Adding fvOptions
+
+*** Reading solid mesh thermophysical properties for region fuelZone
+
+    Adding to thermos
+
+Selecting thermodynamics package 
+{
+    type            heSolidThermo;
+    mixture         pureMixture;
+    transport       constIso;
+    thermo          hConst;
+    equationOfState rhoConst;
+    specie          specie;
+    energy          sensibleEnthalpy;
+}
+
+    Adding to radiations
+
+Selecting radiationModel none
+    Adding fvOptions
+
+Creating finite volume options from "system/fvOptions"
+
+Selecting finite volume options type scalarCodedSource
+    Source: codedSource
+    - selecting all cells
+    - selected 246560 cell(s) with volume 0.00019604784
+--> FOAM Warning : 
+    From bool Foam::functionObjects::vtkWrite::readSelection(const Foam::dictionary&)
+    in file vtkWrite/vtkWriteUpdate.C at line 168
+    No mesh regions selected for function object walls
+Time = 1
+
+
+Solving for fluid region coolantZone
+DILUPBiCGStab:  Solving for Ux, Initial residual = 1, Final residual = 0.024854474, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 1, Final residual = 0.023872911, No Iterations 1
+DILUPBiCGStab:  Solving for Uz, Initial residual = 1, Final residual = 0.027175895, No Iterations 1
+DILUPBiCGStab:  Solving for h, Initial residual = 0.99999995, Final residual = 0.043953761, No Iterations 1
+limitTemperature=limitT, Type=Lower, LimitedCells=0, CellsPercent=0, Tmin=400, UnlimitedTmin=550
+limitTemperature=limitT, Type=Upper, LimitedCells=0, CellsPercent=0, Tmax=1200, UnlimitedTmax=550
+Min/max T:550 590.56053
+GAMG:  Solving for p_rgh, Initial residual = 0.93551973, Final residual = 0.024726601, No Iterations 1000
+GAMG:  Solving for p_rgh, Initial residual = 0.19265368, Final residual = 0.0093892867, No Iterations 1000
+time step continuity errors : sum local = 1.1328343, global = 0.012860133, cumulative = 0.012860133
+Min/max rho:782.47647 829.21375
+DILUPBiCGStab:  Solving for epsilon, Initial residual = 0.12381214, Final residual = 0.002204965, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 1, Final residual = 0.023638838, No Iterations 1
+
+Solving for solid region claddingZone
+DICPCG:  Solving for h, Initial residual = 1, Final residual = 0.03218651, No Iterations 3
+Min/max T:591.34721 970.39119
+
+Solving for solid region claddingZone
+DICPCG:  Solving for h, Initial residual = 0.017308918, Final residual = 0.00072715208, No Iterations 3
+Min/max T:688.80328 1006.6619
+Using dynamicCode for fvOption::fissionSource at line 19 in "/home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin/system/fuelZone/fvOptions/codedSource"
+Could not load "/home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libfissionSource_ce6fa4aaedb989991b44cb4816b801a9b064a99d.so"
+/home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libfissionSource_ce6fa4aaedb989991b44cb4816b801a9b064a99d.so: cannot open shared object file: No such file or directory
+Creating new library in "dynamicCode/fissionSource/platforms/linux64GccDPInt32Opt/lib/libfissionSource_ce6fa4aaedb989991b44cb4816b801a9b064a99d.so"
+Invoking wmake libso /home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin/dynamicCode/fissionSource
+wmake libso /home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin/dynamicCode/fissionSource
+    ln: ./lnInclude
+    dep: codedFvOptionTemplate.C
+    Ctoo: codedFvOptionTemplate.C
+    link: /home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin/dynamicCode/fissionSource/../platforms/linux64GccDPInt32Opt/lib/libfissionSource_ce6fa4aaedb989991b44cb4816b801a9b064a99d.so
+Selecting finite volume options type fissionSource
+    Source: fissionSource
+    - selecting all cells
+    - selected 246560 cell(s) with volume 0.00019604784
+
+Solving for solid region fuelZone
+DICPCG:  Solving for h, Initial residual = 1, Final residual = 0.095168163, No Iterations 5
+Min/max T:870.44094 1237.0465
+
+Solving for solid region fuelZone
+DICPCG:  Solving for h, Initial residual = 0.070519959, Final residual = 0.006390443, No Iterations 12
+Min/max T:851.59022 1129.6379
+ExecutionTime = 69.27 s  ClockTime = 100 s
+
+
+    From virtual bool Foam::regIOobject::readIfModified()
+    in file db/regIOobject/regIOobjectRead.C at line 266
+        Re-reading object fvOptions from file "/home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin/system/fuelZone/fvOptions"
+Time = 2
+
+
+Solving for fluid region coolantZone
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.99838402, Final residual = 0.044937855, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.99839859, Final residual = 0.04541124, No Iterations 1
+DILUPBiCGStab:  Solving for Uz, Initial residual = 0.67789583, Final residual = 0.022469576, No Iterations 1
+DILUPBiCGStab:  Solving for h, Initial residual = 0.7473075, Final residual = 0.035722845, No Iterations 1
+limitTemperature=limitT, Type=Lower, LimitedCells=0, CellsPercent=0, Tmin=400, UnlimitedTmin=550
+limitTemperature=limitT, Type=Upper, LimitedCells=0, CellsPercent=0, Tmax=1200, UnlimitedTmax=550.03521
+Min/max T:549.99997 805.8693
+GAMG:  Solving for p_rgh, Initial residual = 0.99991415, Final residual = 0.0040224295, No Iterations 3
+GAMG:  Solving for p_rgh, Initial residual = 0.0020153118, Final residual = 4.1761269e-05, No Iterations 1000
+time step continuity errors : sum local = 85.753794, global = 0.94483639, cumulative = 0.95769653
+Min/max rho:391.24215 829.21378
+DILUPBiCGStab:  Solving for epsilon, Initial residual = 0.093519831, Final residual = 0.0021393708, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.96415027, Final residual = 0.06540755, No Iterations 1
+
+Solving for solid region claddingZone
+DICPCG:  Solving for h, Initial residual = 0.56274705, Final residual = 0.04145002, No Iterations 2
+Min/max T:699.99521 962.53047
+
+Solving for solid region claddingZone
+DICPCG:  Solving for h, Initial residual = 0.085271634, Final residual = 0.0033070818, No Iterations 3
+Min/max T:667.67392 900.17813
+
+Solving for solid region fuelZone
+DICPCG:  Solving for h, Initial residual = 0.32998591, Final residual = 0.032193972, No Iterations 7
+Min/max T:776.85844 1125.6189
+
+Solving for solid region fuelZone
+DICPCG:  Solving for h, Initial residual = 0.034243764, Final residual = 0.0033401477, No Iterations 12
+Min/max T:761.27294 1043.6516
+ExecutionTime = 98.73 s  ClockTime = 133 s
+
+Time = 3
+
+
+Solving for fluid region coolantZone
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.55141389, Final residual = 0.019668874, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.55333211, Final residual = 0.023164987, No Iterations 1
+DILUPBiCGStab:  Solving for Uz, Initial residual = 0.021976885, Final residual = 0.0004470429, No Iterations 1
+DILUPBiCGStab:  Solving for h, Initial residual = 0.02597637, Final residual = 0.001848112, No Iterations 1
+limitTemperature=limitT, Type=Lower, LimitedCells=0, CellsPercent=0, Tmin=400, UnlimitedTmin=549.99997
+limitTemperature=limitT, Type=Upper, LimitedCells=0, CellsPercent=0, Tmax=1200, UnlimitedTmax=581.31964
+Min/max T:541.20766 830.86143
+GAMG:  Solving for p_rgh, Initial residual = 0.96361281, Final residual = 0.0055207114, No Iterations 3
+GAMG:  Solving for p_rgh, Initial residual = 0.0028198785, Final residual = 2.8037729e-05, No Iterations 108
+time step continuity errors : sum local = 153.58422, global = -1.4597618, cumulative = -0.5020653
+Min/max rho:195.62108 837.62228
+DILUPBiCGStab:  Solving for epsilon, Initial residual = 0.15933694, Final residual = 0.010757289, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.20588031, Final residual = 0.010164178, No Iterations 1
+
+Solving for solid region claddingZone
+DICPCG:  Solving for h, Initial residual = 0.30086386, Final residual = 0.019379972, No Iterations 3
+Min/max T:626.14435 867.05986
+
+Solving for solid region claddingZone
+DICPCG:  Solving for h, Initial residual = 0.019825548, Final residual = 0.0012885383, No Iterations 3
+Min/max T:605.90968 820.85609
+
+Solving for solid region fuelZone
+DICPCG:  Solving for h, Initial residual = 0.28530385, Final residual = 0.026935219, No Iterations 7
+Min/max T:693.73559 1043.7517
+
+Solving for solid region fuelZone
+DICPCG:  Solving for h, Initial residual = 0.028184312, Final residual = 0.0014672429, No Iterations 13
+Min/max T:679.16151 981.96615
+ExecutionTime = 103.17 s  ClockTime = 138 s
+
+Time = 4
+
+
+Solving for fluid region coolantZone
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.38726819, Final residual = 0.032569225, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.38518701, Final residual = 0.033081653, No Iterations 1
+DILUPBiCGStab:  Solving for Uz, Initial residual = 0.01271839, Final residual = 0.00037361788, No Iterations 1
+DILUPBiCGStab:  Solving for h, Initial residual = 0.084317301, Final residual = 0.0066000087, No Iterations 1
+limitTemperature=limitT, Type=Lower, LimitedCells=0, CellsPercent=0, Tmin=400, UnlimitedTmin=541.20766
+limitTemperature=limitT, Type=Upper, LimitedCells=0, CellsPercent=0, Tmax=1200, UnlimitedTmax=586.60344
+Min/max T:516.49103 778.7679
+GAMG:  Solving for p_rgh, Initial residual = 0.61617146, Final residual = 0.0055124538, No Iterations 3
+GAMG:  Solving for p_rgh, Initial residual = 0.0034310248, Final residual = 3.4300926e-05, No Iterations 165
+time step continuity errors : sum local = 173.6808, global = -2.19979, cumulative = -2.7018552
+Min/max rho:159.99811 863.66127
+DILUPBiCGStab:  Solving for epsilon, Initial residual = 0.065307119, Final residual = 0.002581432, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.040443126, Final residual = 0.0027967916, No Iterations 1
+
+Solving for solid region claddingZone
+DICPCG:  Solving for h, Initial residual = 0.27614559, Final residual = 0.015207357, No Iterations 3
+Min/max T:596.82744 805.41754
+
+Solving for solid region claddingZone
+DICPCG:  Solving for h, Initial residual = 0.015987371, Final residual = 0.00085669504, No Iterations 3
+Min/max T:581.65002 769.48031
+
+Solving for solid region fuelZone
+DICPCG:  Solving for h, Initial residual = 0.25145368, Final residual = 0.023859394, No Iterations 7
+Min/max T:635.33324 981.46044
+
+Solving for solid region fuelZone
+DICPCG:  Solving for h, Initial residual = 0.024827109, Final residual = 0.0013268628, No Iterations 13
+Min/max T:626.49663 931.44179
+ExecutionTime = 110.36 s  ClockTime = 146 s
+
+
+    From virtual bool Foam::regIOobject::readIfModified()
+    in file db/regIOobject/regIOobjectRead.C at line 266
+        Re-reading object fvOptions from file "/home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin/system/fuelZone/fvOptions"
+Time = 5
+
+
+Solving for fluid region coolantZone
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.53340221, Final residual = 0.018356413, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.53831701, Final residual = 0.018037884, No Iterations 1
+DILUPBiCGStab:  Solving for Uz, Initial residual = 0.014657397, Final residual = 0.00036224169, No Iterations 1
+DILUPBiCGStab:  Solving for h, Initial residual = 0.096074166, Final residual = 0.0014093986, No Iterations 1
+limitTemperature=limitT, Type=Lower, LimitedCells=0, CellsPercent=0, Tmin=400, UnlimitedTmin=516.49103
+limitTemperature=limitT, Type=Upper, LimitedCells=0, CellsPercent=0, Tmax=1200, UnlimitedTmax=635.2206
+Min/max T:524.21175 746.11988
+GAMG:  Solving for p_rgh, Initial residual = 0.33894671, Final residual = 0.0018115715, No Iterations 4

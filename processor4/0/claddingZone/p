@@ -25,12 +25,12 @@ boundaryField
     inlet
     {
         type            calculated;
-        value           uniform 15700000;
+        value           nonuniform List<scalar> 0();
     }
     outlet
     {
         type            calculated;
-        value           uniform 15700000;
+        value           nonuniform List<scalar> 0();
     }
     claddingZone_to_fuelZone
     {
@@ -42,12 +42,32 @@ boundaryField
         type            calculated;
         value           uniform 15700000;
     }
-    procBoundary4to0
+    procBoundary4to1
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary4to2
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary4to3
     {
         type            processor;
         value           uniform 15700000;
     }
     procBoundary4to5
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary4to6
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary4to9
     {
         type            processor;
         value           uniform 15700000;

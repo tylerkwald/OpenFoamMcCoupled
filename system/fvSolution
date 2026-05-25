@@ -20,7 +20,7 @@ solvers
 }
 
 // The transient loop algorithms (nOuterCorrectors, etc.) are defined in the region subfolders.
-PIMPLE
+SIMPLE
 {
 }
 

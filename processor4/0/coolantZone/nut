@@ -25,7 +25,7 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value           uniform 1e-05;
+        value           nonuniform List<scalar> 0();
     }
     outlet
     {
@@ -52,12 +52,27 @@ boundaryField
         type            nutkWallFunction;
         value           uniform 1e-05;
     }
+    procBoundary4to1
+    {
+        type            processor;
+        value           uniform 1e-05;
+    }
     procBoundary4to2
     {
         type            processor;
         value           uniform 1e-05;
     }
+    procBoundary4to3
+    {
+        type            processor;
+        value           uniform 1e-05;
+    }
     procBoundary4to5
+    {
+        type            processor;
+        value           uniform 1e-05;
+    }
+    procBoundary4to7
     {
         type            processor;
         value           uniform 1e-05;

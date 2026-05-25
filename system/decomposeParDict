@@ -14,7 +14,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-numberOfSubdomains  8; // Number of CPU cores you want to use
+numberOfSubdomains  12; // Number of CPU cores you want to use
 method              scotch; // Default strategy for all regions
 
 // Global coefficients for the scotch method

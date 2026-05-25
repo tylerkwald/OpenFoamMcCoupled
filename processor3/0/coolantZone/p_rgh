@@ -25,8 +25,8 @@ boundaryField
     inlet
     {
         type            fixedFluxPressure;
-        gradient        uniform 0;
-        value           uniform 15700000;
+        gradient        nonuniform List<scalar> 0();
+        value           nonuniform List<scalar> 0();
     }
     outlet
     {
@@ -34,8 +34,8 @@ boundaryField
         rho             rho;
         psi             none;
         gamma           1;
-        p0              uniform 0;
-        value           uniform 0;
+        p0              nonuniform List<scalar> 0();
+        value           nonuniform List<scalar> 0();
     }
     min_x
     {
@@ -65,6 +65,31 @@ boundaryField
         value           uniform 15700000;
     }
     procBoundary3to2
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary3to4
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary3to5
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary3to7
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary3to9
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary3to10
     {
         type            processor;
         value           uniform 15700000;

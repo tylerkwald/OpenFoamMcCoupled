@@ -34,7 +34,7 @@ solvers
     }
 }
 
-PIMPLE
+SIMPLE
 {
     nOuterCorrectors    3;
     nNonOrthogonalCorrectors 1;

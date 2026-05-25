@@ -14,10 +14,10 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-surfaceFile "constant/GeometrySimple/bounding.stl";
+surfaceFile "constant/Geometry/bounding.stl";
 
 // ── Baseline Coarse Cell Sizes (Z-Direction Focus) ───────────────────────
-maxCellSize         0.01;    
+maxCellSize         0.02;    
 smoothingIterations    20; // Default is usually lower; bump it up
 maxIterationSteps      50;
 anisotropicSources
@@ -28,7 +28,7 @@ anisotropicSources
         centre      (0 0 1.84);
         lengthX     0.014;
         lengthY     0.014;
-        lengthZ     0.05;
+        lengthZ     3.7;
         min         (-0.007 -0.007 -0.001);
         max         (0.007 0.007 0.05);
         

@@ -25,7 +25,7 @@ boundaryField
     inlet
     {
         type            calculated;
-        value           uniform 15700000;
+        value           nonuniform List<scalar> 0();
     }
     outlet
     {
@@ -53,12 +53,17 @@ boundaryField
         type            calculated;
         value           uniform 15700000;
     }
-    procBoundary6to5
+    procBoundary6to7
     {
         type            processor;
         value           uniform 15700000;
     }
-    procBoundary6to7
+    procBoundary6to8
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary6to9
     {
         type            processor;
         value           uniform 15700000;

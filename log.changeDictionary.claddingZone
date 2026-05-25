@@ -8,10 +8,10 @@
 Build  : _b8cf4d35-20260127 OPENFOAM=2412 patch=260127 version=2412
 Arch   : "LSB;label=32;scalar=64"
 Exec   : changeDictionary -region claddingZone
-Date   : May 21 2026
-Time   : 14:19:02
+Date   : May 24 2026
+Time   : 18:15:41
 Host   : tyler-Precision-3551
-PID    : 142497
+PID    : 22351
 I/O    : uncollated
 Case   : /home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin
 nProcs : 1
@@ -37,21 +37,21 @@ fieldDict:
     inlet
     {
         type            patch;
-        nFaces          1204;
-        startFace       18404;
+        nFaces          220;
+        startFace       89572;
     }
     outlet
     {
         type            patch;
-        nFaces          1204;
-        startFace       19608;
+        nFaces          220;
+        startFace       89792;
     }
     claddingZone_to_fuelZone
     {
         type            mappedWall;
         inGroups        1 ( wall );
-        nFaces          1968;
-        startFace       20812;
+        nFaces          30912;
+        startFace       90012;
         sampleMode      nearestPatchFace;
         sampleRegion    fuelZone;
         samplePatch     fuelZone_to_claddingZone;
@@ -60,8 +60,8 @@ fieldDict:
     {
         type            mappedWall;
         inGroups        1 ( wall );
-        nFaces          2160;
-        startFace       22780;
+        nFaces          32384;
+        startFace       120924;
         sampleMode      nearestPatchFace;
         sampleRegion    coolantZone;
         samplePatch     coolantZone_to_claddingZone;

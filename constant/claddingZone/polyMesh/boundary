@@ -22,23 +22,23 @@ FoamFile
     inlet
     {
         type            patch;
-        nFaces          1204;
-        startFace       18404;
+        nFaces          220;
+        startFace       89572;
     }
 
     outlet
     {
         type            patch;
-        nFaces          1204;
-        startFace       19608;
+        nFaces          220;
+        startFace       89792;
     }
 
     claddingZone_to_fuelZone
     {
         type            mappedWall;
         inGroups        1 ( wall );
-        nFaces          1968;
-        startFace       20812;
+        nFaces          30912;
+        startFace       90012;
         sampleMode      nearestPatchFace;
         sampleRegion    fuelZone;
         samplePatch     fuelZone_to_claddingZone;
@@ -48,8 +48,8 @@ FoamFile
     {
         type            mappedWall;
         inGroups        1 ( wall );
-        nFaces          2160;
-        startFace       22780;
+        nFaces          32384;
+        startFace       120924;
         sampleMode      nearestPatchFace;
         sampleRegion    coolantZone;
         samplePatch     coolantZone_to_claddingZone;

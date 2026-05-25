@@ -26,7 +26,7 @@ actions
         source      surfaceToCell;
         sourceInfo
         {
-            file                "constant/GeometrySimple/fuel.stl";
+            file                "constant/Geometry/fuel.stl";
             useSurfaceOrientation false; 
             outsidePoints       ((.006 .006 0.001)); // Point guaranteed to be OUTSIDE the STL
             includeCut          true;            // Include cells cut by the STL
@@ -50,7 +50,7 @@ actions
         source      surfaceToCell;
         sourceInfo
         {
-            file                "constant/GeometrySimple/cladding.stl";
+            file                "constant/Geometry/cladding.stl";
             useSurfaceOrientation false; 
             outsidePoints       ((0 0 .001)(.006 .006 .001)); // Point guaranteed to be OUTSIDE the STL
             includeCut          false;            // Exclude cells cut by the STL

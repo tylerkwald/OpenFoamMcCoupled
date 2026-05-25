@@ -44,12 +44,17 @@ boundaryField
         kappaMethod     solidThermo;
         value           uniform 600;
     }
-    procBoundary7to5
+    procBoundary7to1
     {
         type            processor;
         value           uniform 600;
     }
     procBoundary7to6
+    {
+        type            processor;
+        value           uniform 600;
+    }
+    procBoundary7to8
     {
         type            processor;
         value           uniform 600;

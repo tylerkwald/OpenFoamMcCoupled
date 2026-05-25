@@ -25,13 +25,13 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value           uniform 0.17;
+        value           nonuniform List<scalar> 0();
     }
     outlet
     {
         type            inletOutlet;
-        inletValue      uniform 0.17;
-        value           uniform 0.17;
+        inletValue      nonuniform List<scalar> 0();
+        value           nonuniform List<scalar> 0();
     }
     min_x
     {
@@ -60,6 +60,31 @@ boundaryField
         value           uniform 0.17;
     }
     procBoundary3to2
+    {
+        type            processor;
+        value           uniform 0.17;
+    }
+    procBoundary3to4
+    {
+        type            processor;
+        value           uniform 0.17;
+    }
+    procBoundary3to5
+    {
+        type            processor;
+        value           uniform 0.17;
+    }
+    procBoundary3to7
+    {
+        type            processor;
+        value           uniform 0.17;
+    }
+    procBoundary3to9
+    {
+        type            processor;
+        value           uniform 0.17;
+    }
+    procBoundary3to10
     {
         type            processor;
         value           uniform 0.17;

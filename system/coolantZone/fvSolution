@@ -36,7 +36,7 @@ solvers
     p_rgh
     {
         solver           GAMG;
-        tolerance        1e-7;
+        tolerance        5e-6;
         relTol           0.01;
         smoother         GaussSeidel;
     }
@@ -44,7 +44,7 @@ solvers
     p_rghFinal
     {
         $p_rgh;
-        tolerance        1e-7;
+        tolerance        5e-6;
         relTol           0;
     }
 
@@ -65,7 +65,7 @@ solvers
     }
 }
 
-PIMPLE
+SIMPLE
 {
     momentumPredictor   yes;
     nOuterCorrectors    3;  // Syncs multi-region matrices 3 times per time step
@@ -86,7 +86,7 @@ relaxationFactors
     fields
     {
         rho             0.5; // Dampens wild density swings
-        p_rgh           0.5; // Smooths pressure spikes
+        p_rgh           0.2; // Smooths pressure spikes
     }
     equations
     {

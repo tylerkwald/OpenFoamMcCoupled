@@ -30,7 +30,7 @@ boundaryField
     outlet
     {
         type            calculated;
-        value           uniform 15700000;
+        value           nonuniform List<scalar> 0();
     }
     min_x
     {
@@ -58,7 +58,17 @@ boundaryField
         type            processor;
         value           uniform 15700000;
     }
-    procBoundary1to7
+    procBoundary1to2
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary1to4
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary1to5
     {
         type            processor;
         value           uniform 15700000;

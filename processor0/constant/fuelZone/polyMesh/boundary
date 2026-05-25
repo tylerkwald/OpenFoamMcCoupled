@@ -16,26 +16,26 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-6
+5
 (
     inlet
     {
         type            patch;
-        nFaces          646;
-        startFace       10616;
+        nFaces          0;
+        startFace       59036;
     }
     outlet
     {
         type            patch;
-        nFaces          646;
-        startFace       11262;
+        nFaces          1340;
+        startFace       59036;
     }
     fuelZone_to_claddingZone
     {
         type            mappedWall;
         inGroups        2(wall mappedPatch);
-        nFaces          132;
-        startFace       11908;
+        nFaces          2506;
+        startFace       60376;
         sampleMode      nearestPatchFace;
         sampleRegion    claddingZone;
         samplePatch     claddingZone_to_fuelZone;
@@ -44,34 +44,23 @@ FoamFile
     {
         type            processor;
         inGroups        1(processor);
-        nFaces          216;
-        startFace       12040;
+        nFaces          869;
+        startFace       62882;
         matchTolerance  0.0001;
         transform       unknown;
         myProcNo        0;
         neighbProcNo    1;
     }
-    procBoundary0to3
+    procBoundary0to2
     {
         type            processor;
         inGroups        1(processor);
-        nFaces          282;
-        startFace       12256;
+        nFaces          885;
+        startFace       63751;
         matchTolerance  0.0001;
         transform       unknown;
         myProcNo        0;
-        neighbProcNo    3;
-    }
-    procBoundary0to4
-    {
-        type            processor;
-        inGroups        1(processor);
-        nFaces          102;
-        startFace       12538;
-        matchTolerance  0.0001;
-        transform       unknown;
-        myProcNo        0;
-        neighbProcNo    4;
+        neighbProcNo    2;
     }
 )
 

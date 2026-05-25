@@ -29,9 +29,7 @@ boundaryField
     }
     outlet
     {
-        type            inletOutlet;
-        inletValue      uniform 550;
-        value           uniform 550;
+        type            zeroGradient;
     }
     coolantZone_to_claddingZone
     {

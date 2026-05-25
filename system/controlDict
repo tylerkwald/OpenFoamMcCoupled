@@ -14,25 +14,25 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     chtMultiRegionFoam; // Changed from simple solver
+application     chtMultiRegionSimpleFoam; // Changed from simple solver
 
 startFrom       latestTime;
 
-startTime       0.001;
+startTime       0.0;
 
 stopAt          endTime;
 
-endTime         1;                 // Run for a few seconds of physical time
+endTime         381;                 // Run for a few seconds of physical time
 
 // FIX: Enable dynamic time-stepping for rock-solid stability
-adjustTimeStep  yes;
-maxCo           0.1;    // Lowered from 0.5/1.0 to brutally restrict velocity spikes
-maxAlphaCo      0.1;    // Restricts thermal diffusion jumps
-maxDeltaT       1e-3;   // Hard cap on how large the time step is allowed to grow
-deltaT          1e-5;   // Start the simulation 10x slower than before
+//adjustTimeStep  yes;
+//maxCo           0.1;    // Lowered from 0.5/1.0 to brutally restrict velocity spikes
+//maxAlphaCo      0.1;    // Restricts thermal diffusion jumps
+//maxDeltaT       1e-3;   // Hard cap on how large the time step is allowed to grow
+deltaT          1;   // Start the simulation 10x slower than before
 writeControl    adjustable;
 
-writeInterval   1000;
+writeInterval   100;
 
 purgeWrite      0;
 

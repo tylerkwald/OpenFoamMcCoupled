@@ -35,12 +35,12 @@ boundaryField
         type            calculated;
         value           uniform 0;
     }
-    procBoundary7to2
+    procBoundary7to6
     {
         type            processor;
         value           uniform 0;
     }
-    procBoundary7to6
+    procBoundary7to8
     {
         type            processor;
         value           uniform 0;

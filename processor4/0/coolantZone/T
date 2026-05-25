@@ -25,13 +25,11 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value           uniform 550;
+        value           nonuniform List<scalar> 0();
     }
     outlet
     {
-        type            inletOutlet;
-        inletValue      uniform 550;
-        value           uniform 550;
+        type            zeroGradient;
     }
     min_x
     {
@@ -56,12 +54,27 @@ boundaryField
         kappaMethod     fluidThermo;
         value           uniform 550;
     }
+    procBoundary4to1
+    {
+        type            processor;
+        value           uniform 550;
+    }
     procBoundary4to2
     {
         type            processor;
         value           uniform 550;
     }
+    procBoundary4to3
+    {
+        type            processor;
+        value           uniform 550;
+    }
     procBoundary4to5
+    {
+        type            processor;
+        value           uniform 550;
+    }
+    procBoundary4to7
     {
         type            processor;
         value           uniform 550;

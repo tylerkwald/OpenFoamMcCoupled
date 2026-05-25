@@ -14,7 +14,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-simulationType  laminar; //RAS; // Reynolds-Averaged Navier-Stokes
+simulationType  RAS; // Reynolds-Averaged Navier-Stokes
 
 RAS
 {

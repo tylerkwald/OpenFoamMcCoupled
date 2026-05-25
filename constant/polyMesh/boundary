@@ -22,43 +22,43 @@ FoamFile
 inlet
 {
     type patch;
-    nFaces 16384;
-    startFace 276992;
+    nFaces 4096;
+    startFace 2233344;
 }
 
 outlet
 {
     type patch;
-    nFaces 16384;
-    startFace 293376;
+    nFaces 4096;
+    startFace 2237440;
 }
 
 min_x
 {
     type symmetryPlane;
-    nFaces 768;
-    startFace 309760;
+    nFaces 11776;
+    startFace 2241536;
 }
 
 max_x
 {
     type symmetryPlane;
-    nFaces 768;
-    startFace 310528;
+    nFaces 11776;
+    startFace 2253312;
 }
 
 min_y
 {
     type symmetryPlane;
-    nFaces 768;
-    startFace 311296;
+    nFaces 11776;
+    startFace 2265088;
 }
 
 max_y
 {
     type symmetryPlane;
-    nFaces 768;
-    startFace 312064;
+    nFaces 11776;
+    startFace 2276864;
 }
 
 )

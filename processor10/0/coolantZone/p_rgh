@@ -1,0 +1,95 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2412                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       volScalarField;
+    location    "0/coolantZone";
+    object      p_rgh;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [1 -1 -2 0 0 0 0];
+
+internalField   uniform 15700000;
+
+boundaryField
+{
+    inlet
+    {
+        type            fixedFluxPressure;
+        gradient        nonuniform List<scalar> 0();
+        value           nonuniform List<scalar> 0();
+    }
+    outlet
+    {
+        type            totalPressure;
+        rho             rho;
+        psi             none;
+        gamma           1;
+        p0              nonuniform List<scalar> 0();
+        value           nonuniform List<scalar> 0();
+    }
+    min_x
+    {
+        type            symmetryPlane;
+    }
+    max_x
+    {
+        type            symmetryPlane;
+    }
+    min_y
+    {
+        type            symmetryPlane;
+    }
+    max_y
+    {
+        type            symmetryPlane;
+    }
+    coolantZone_to_claddingZone
+    {
+        type            fixedFluxPressure;
+        gradient        uniform 0;
+        value           uniform 15700000;
+    }
+    procBoundary10to2
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary10to3
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary10to7
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary10to8
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary10to9
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+    procBoundary10to11
+    {
+        type            processor;
+        value           uniform 15700000;
+    }
+}
+
+
+// ************************************************************************* //

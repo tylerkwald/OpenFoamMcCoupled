@@ -8,10 +8,10 @@
 Build  : _b8cf4d35-20260127 OPENFOAM=2412 patch=260127 version=2412
 Arch   : "LSB;label=32;scalar=64"
 Exec   : cartesianMesh
-Date   : May 21 2026
-Time   : 14:18:55
+Date   : May 24 2026
+Time   : 18:15:00
 Host   : tyler-Precision-3551
-PID    : 141610
+PID    : 21344
 I/O    : uncollated
 Case   : /home/tyler/OpenFOAM/tyler-v2412/run/MultiFuelPin
 nProcs : 1
@@ -23,28 +23,28 @@ allowSystemOperations : Allowing user-supplied system call operations
 Create time
 
 Setting root cube size and refinement parameters
-Root box (-0.587 -0.587 -1.255) (1.973 1.973 1.305)
-Requested cell size corresponds to octree level 8
+Root box (-4.427 -4.427 -3.2912) (5.813 5.813 6.9488)
+Requested cell size corresponds to octree level 9
 Refining boundary
 Refining boundary boxes to the given size
 Finished refining boundary boxes
 Performing automatic refinement
 Performing automatic refinement
 Marking inside/outside.
-Number of internal boxes is 9688
-Number of outside boxes is 62144
-Number of data boxes is 34800
+Number of internal boxes is 66976
+Number of outside boxes is 38464
+Number of data boxes is 54056
 Number of unknown boxes is 0
 Refining boxes near DATA boxes
 Marking inside/outside.
-Number of internal boxes is 63504
-Number of outside boxes is 62144
-Number of data boxes is 34800
+Number of internal boxes is 699608
+Number of outside boxes is 38464
+Number of data boxes is 54056
 Number of unknown boxes is 0
 Finished refining boxes near DATA boxes
 Extracting polyMesh
 Creating octree vertices
-Octree nodes 115443
+Octree nodes 780381
 Resizing points!
 Finished creating octree vertices
 Creating polyMesh from octree
@@ -52,13 +52,13 @@ Reordering boundary faces
 Finished reordering boundary faces
 Finished creating polyMesh
 Mesh has :
-80645 vertices 
-207396 faces
-63504 cells
+726327 vertices 
+2125236 faces
+699608 cells
 Finished extracting polyMesh
 Checking for irregular surface connections
 Checking cells connected to surface vertices
-Found 33768 boundary faces 
+Found 52824 boundary faces 
 Found 0 problematic vertices
 Finished checking cells connected to surface vertices
 Checking for non - manifold surface edges
@@ -68,13 +68,13 @@ Checking faces connections to surface vertices
 Found 0 invalid connections
 Finished checking faces connections to surface vertices
 Finished checking for irregular surface connections
-Found 33768 boundary faces 
+Found 52824 boundary faces 
 Found 0 non - mappable cells
 Checking cell connections
 Finished checking cell connections
-Found 33768 boundary faces 
+Found 52824 boundary faces 
 Marked 0 faces for decomposition
-Found 33768 boundary faces 
+Found 52824 boundary faces 
 Smoothing mesh surface before mapping.
 Found 0 corners at the surface of the volume mesh
 Found 0 edge points at the surface of the volume mesh
@@ -99,60 +99,58 @@ Found 0 edge points at the surface of the volume mesh
 Starting untangling the surface of the volume mesh
 Number of inverted boundary faces is 0
 Finished untangling the surface of the volume mesh
-Found 33768 boundary faces 
+Found 52824 boundary faces 
 Extracting edges
 Starting topological adjustment of patches
 No topological adjustment was needed
 Starting geometrical adjustment of patches
 Found 8 corners at the surface of the volume mesh
-Found 1012 edge points at the surface of the volume mesh
+Found 1212 edge points at the surface of the volume mesh
 12 edge groups found!
 No geometrical adjustment was needed
-Found 33768 boundary faces 
+Found 52824 boundary faces 
 Found 8 corners at the surface of the volume mesh
-Found 1012 edge points at the surface of the volume mesh
+Found 1212 edge points at the surface of the volume mesh
 Performing patch correction
 Found 8 corners at the surface of the volume mesh
-Found 1012 edge points at the surface of the volume mesh
+Found 1212 edge points at the surface of the volume mesh
 Finished with patch correction
-Found 33768 boundary faces 
+Found 52824 boundary faces 
 Mapping vertices with respect to surface patches
 Found 8 corners at the surface of the volume mesh
-Found 1012 edge points at the surface of the volume mesh
+Found 1212 edge points at the surface of the volume mesh
 12 edge groups found!
 Finished mapping vertices with respect to surface patches
-Found 33768 boundary faces 
+Found 52824 boundary faces 
 Found 8 corners at the surface of the volume mesh
-Found 1012 edge points at the surface of the volume mesh
+Found 1212 edge points at the surface of the volume mesh
 Optimizing edges. Iteration:.....
 Optimizing surface vertices. Iteration:.....
 Starting untangling the surface of the volume mesh
 Number of inverted boundary faces is 0
 Finished untangling the surface of the volume mesh
-Found 33768 boundary faces 
+Found 52824 boundary faces 
 Found 8 corners at the surface of the volume mesh
-Found 1012 edge points at the surface of the volume mesh
+Found 1212 edge points at the surface of the volume mesh
 Found 8 corners at the surface of the volume mesh
-Found 1012 edge points at the surface of the volume mesh
+Found 1212 edge points at the surface of the volume mesh
 Starting creating layer cells
-Adding 34800 cells to the mesh
-Resizing cells!
-Resizing faces!
+Adding 54056 cells to the mesh
 Finished adding cells to the mesh
 Reordering boundary faces 
 Finished reordering boundary faces
 Finished creating layer cells
-Found 35840 boundary faces 
+Found 55296 boundary faces 
 Found 8 corners at the surface of the volume mesh
-Found 1036 edge points at the surface of the volume mesh
+Found 1236 edge points at the surface of the volume mesh
 Optimizing edges. Iteration:.....
 Optimizing surface vertices. Iteration:.....
 Starting untangling the surface of the volume mesh
 Number of inverted boundary faces is 0
 Finished untangling the surface of the volume mesh
-Found 35840 boundary faces 
+Found 55296 boundary faces 
 Found 8 corners at the surface of the volume mesh
-Found 1036 edge points at the surface of the volume mesh
+Found 1236 edge points at the surface of the volume mesh
 Starting smoothing the mesh
 Starting untangling the mesh
 Iteration 0. Number of bad faces is 0
@@ -162,20 +160,20 @@ Iteration 0. Number of bad faces is 0
 Starting untangling the mesh
 Iteration 0. Number of bad faces is 0
 Finished untangling the mesh
-Found 35840 boundary faces 
+Found 55296 boundary faces 
 Mapping vertices onto surface
 Finished mapping vertices onto surface
-Found 35840 boundary faces 
+Found 55296 boundary faces 
 Found 8 corners at the surface of the volume mesh
-Found 1036 edge points at the surface of the volume mesh
+Found 1236 edge points at the surface of the volume mesh
 Optimizing edges. Iteration:.....
 Optimizing surface vertices. Iteration:.....
 Starting untangling the surface of the volume mesh
 Number of inverted boundary faces is 0
 Finished untangling the surface of the volume mesh
-Found 35840 boundary faces 
+Found 55296 boundary faces 
 Found 8 corners at the surface of the volume mesh
-Found 1036 edge points at the surface of the volume mesh
+Found 1236 edge points at the surface of the volume mesh
 Starting smoothing the mesh
 Starting untangling the mesh
 Iteration 0. Number of bad faces is 0
@@ -189,7 +187,7 @@ Renumbering the mesh
 Finished renumbering the mesh
 Renaming boundary patches
 Finished renaming boundary patches
-ExecutionTime = 25.56 s  ClockTime = 2 s
+ExecutionTime = 94.28 s  ClockTime = 11 s
 
 End
 

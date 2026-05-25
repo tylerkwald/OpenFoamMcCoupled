@@ -29,9 +29,7 @@ boundaryField
     }
     outlet
     {
-        type            inletOutlet;
-        inletValue      uniform (0 0 0);
-        value           uniform (0 0 4);
+        type            zeroGradient;
     }
     min_x
     {
@@ -58,7 +56,17 @@ boundaryField
         type            processor;
         value           uniform (0 0 4);
     }
+    procBoundary0to2
+    {
+        type            processor;
+        value           uniform (0 0 4);
+    }
     procBoundary0to3
+    {
+        type            processor;
+        value           uniform (0 0 4);
+    }
+    procBoundary0to5
     {
         type            processor;
         value           uniform (0 0 4);

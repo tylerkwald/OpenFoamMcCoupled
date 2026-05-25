@@ -16,7 +16,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-surfaceFile     "constant/GeometrySimple/bounding.stl";
+surfaceFile     "constant/Geometry/bounding.stl";
 
 surfaceMeta
 {
@@ -26,6 +26,21 @@ surfaceMeta
     nFeatureEdges   0;
     patches
     {
+        min_z
+        {
+            type            empty;
+            nFacets         2;
+        }
+        min_x
+        {
+            type            empty;
+            nFacets         2;
+        }
+        min_y
+        {
+            type            empty;
+            nFacets         2;
+        }
         max_z
         {
             type            empty;
@@ -37,21 +52,6 @@ surfaceMeta
             nFacets         2;
         }
         max_x
-        {
-            type            empty;
-            nFacets         2;
-        }
-        min_y
-        {
-            type            empty;
-            nFacets         2;
-        }
-        min_x
-        {
-            type            empty;
-            nFacets         2;
-        }
-        min_z
         {
             type            empty;
             nFacets         2;
